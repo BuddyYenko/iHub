@@ -17,13 +17,13 @@ public class WebService {
     //private static String SOAP_ACTION= "<a class='vglnk' href='http://tempuri.org/' rel='nofollow'><span>http</span><span>://</span><span>tempuri</span><span>.</span><span>org</span><span>/</span></a>";
 
 
-    public static String SOAP_ACTION = "http://tempuri.org/";
+    public static String SOAP_ACTION = "http://tempuri.org/HelloWorld";
 
     public  static String OPERATION_NAME = "Add";
 
     public  static String NAMESPACE = "http://tempuri.org/";
 
-    public  static String URL ="http://192.168.112.1/WebService/Service.asmx";
+    public  static String URL ="http://evolve-ict.co.za/service.asmx";
 
 
     public static String invokeHelloWorldWS(String name, String webMethName) {
@@ -33,7 +33,7 @@ public class WebService {
         // Property which holds input parameters
         PropertyInfo sayHelloPI = new PropertyInfo();
         // Set Name
-        sayHelloPI.setName("Name");
+        sayHelloPI.setName("name");
         // Set Value
         sayHelloPI.setValue(name);
         // Set dataType
@@ -51,6 +51,8 @@ public class WebService {
         HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
 
         try {
+            androidHttpTransport.debug = true;//need to be set true if it is a .net service
+
             // Invoke web service
             androidHttpTransport.call(SOAP_ACTION + webMethName, envelope);
             // Get the response
@@ -62,7 +64,7 @@ public class WebService {
             //Print error
             e.printStackTrace();
             //Assign error message to resTxt
-            resTxt = "Error occured";
+            resTxt = "Error occured " + e.toString();
         }
         //Return resTxt to calling object
         return resTxt;
