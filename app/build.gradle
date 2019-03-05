@@ -28,5 +28,7 @@ dependencies {
     implementation 'com.journeyapps:zxing-android-embedded:3.5.0'
     implementation 'com.mcxiaoke.volley:library:1.0.19'
     implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.1'
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
 
 }
+apply plugin: 'com.google.gms.google-services'
