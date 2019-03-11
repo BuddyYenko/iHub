@@ -3,6 +3,7 @@ package com.example.s215087038.ihub;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +22,7 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        com.google.firebase.iid.FirebaseInstanceId.getInstance().getToken();
+        Log.d("Main2Activity", "Refreshed token:------------------------------ " + com.google.firebase.iid.FirebaseInstanceId.getInstance().getToken());
 
         //Name Text control
         et = (EditText) findViewById(R.id.editText1);
