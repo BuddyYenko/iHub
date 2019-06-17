@@ -6,6 +6,7 @@ import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -37,10 +38,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
-        btnScan = (Button) findViewById(R.id.btnScan);
+        btnScan = findViewById(R.id.btnScan);
         //initializing scan object
         qrScanner = new IntentIntegrator(this);
         builder = new AlertDialog.Builder(MainActivity.this);
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         String code = jsonObject.getString("code");
                                         String message = jsonObject.getString("message");
 
-                                        builder.setTitle("iHub Response");
+                                        builder.setTitle("Open Sesame Response");
                                         builder.setMessage(message);
                                         DisplayAlert(code);
 
